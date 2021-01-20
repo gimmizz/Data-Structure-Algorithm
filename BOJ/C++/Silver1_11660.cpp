@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <bits/stdc++.h>
+// bits 쓰면 좌표(x1, y1 등) 사용하면 안된다!
 using namespace std;
 
 int N, M, nums[1030][1030];
