@@ -1,6 +1,6 @@
 /*
-* 2533번 사회망 서비스(sns)  |  DP, 트리  
-* 트리만드는 유형은 처음 풀어봐서, 힌트를 보고 구현해냈다. dp 초기 선언은 -1이라는 점, 각 ret는 재선언해주어야 한다는 점 반드시 기억하자! 
+* 1463번 1로 만들기  |  DP 
+* 맨 처음엔 단순히 그리디라고 생각했는데, 아니다! dp다! 
 */
 #include <iostream>
 #include <cstring>
@@ -13,8 +13,11 @@ int go(int n){
 	if (n==1) return 0;
 	if (ret != -1) return ret;
 
-	if (n%3 == 0) ret = min(go(n-1)+1, go(n/3) + 1);
-	if (n%2 == 0) ret = min(go(n-1)+1, go(n/2) + 1);
+	if (n%6 == 0) ret = min(min(go(n-1)+1, go(n/3) + 1), go(n/2) + 1);
+	else if (n%3 == 0) ret = min(go(n-1)+1, go(n/3) + 1);
+	else if (n%2 == 0) ret = min(go(n-1)+1, go(n/2) + 1);
+	else ret = go(n-1) + 1 ;
+	
 	return ret;
 }
 
